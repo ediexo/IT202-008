@@ -47,9 +47,7 @@ require(__DIR__ . "/../../partials/nav.php");
         $hasError = true;
     }
     if (!$hasError){
-        echo "Welcome, $email";
-    }
-    $db = getDB();
+        $db = getDB();
     $stmt = $db->prepare("SELECT email, password from Users where email = :email");
     try{
         $r = $stmt->execute([":email" => $email]);
@@ -60,6 +58,8 @@ require(__DIR__ . "/../../partials/nav.php");
                 unset($user["password"]);
                 if (password_verify($password, $hash)) {
                     echo "Welcome $email";
+                    $_SESSION["user"] = $user;
+                    die(header("Location: home.php"));
                 }
                 else {
                     echo "invalid password";
@@ -73,5 +73,7 @@ require(__DIR__ . "/../../partials/nav.php");
     catch (Exception $e) {
         echo "<pre>" . var_export($e, true) . "</pre>";
     }
+    }
+    
  }
 ?>

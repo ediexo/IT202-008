@@ -37,8 +37,8 @@ require(__DIR__ . "/../../lib/functions.php");
         $hasError = true;
     }
     //sanitize and validate email
-    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    $email = sanitize_email($email);
+    if (!is_valid_email($email)){
         flash("Invalid email address");
         $hasError = true;
     }

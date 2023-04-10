@@ -7,6 +7,10 @@ require(__DIR__ . "/../../lib/functions.php");
         <input type="email" name="email" required />
     </div>
     <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" required maxlength="30" />
+    </div>
+    <div>
         <label for="pw">Password</label>
         <input type="password" id="pw" name="password" required minlength="8" />
     </div>
@@ -36,10 +40,15 @@ require(__DIR__ . "/../../lib/functions.php");
         flash("Email must not be empty") ;
         $hasError = true;
     }
+    $username = se($_POST, "username", "", false);
     //sanitize and validate email
     $email = sanitize_email($email);
     if (!is_valid_email($email)){
         flash("Invalid email address");
+        $hasError = true;
+    }
+    if (!preg_match('/^[a-z0-9_-]{3,16}$/i', $username)) {
+        flash("Username must only be alphanumeric and can only contain - or _", "danger");
         $hasError = true;
     }
     if(empty($password)) {
@@ -59,7 +68,16 @@ require(__DIR__ . "/../../lib/functions.php");
             $hasError = true;
         }
     if (!$hasError){
-        flash("Welcome, $email");
+        $hash = password_hash($password, PASSWORD_BCRYPT);
+        $db = getDB();
+        $stmt = $db->prepare("INSERT INTO Users (email, password, username) VALUES(:email, :password, :username)");
+        try {
+            $stmt->execute([":email" => $email, ":password" => $hash, ":username" => $username]);
+            flash("Successfully registered!");
+        } catch (Exception $e) {
+            flash("There was a problem registering", "danger");
+            flash("<pre>" . var_export($e, true) . "</pre>", "danger");
+        }
     }
  }
  require(__DIR__. "/../../partials/flash.php");

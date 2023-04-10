@@ -1,6 +1,7 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
+<link rel="stylesheet" href="style.css" type="text/css">
 <form onsubmit="return validate(this)" method="POST">
     <div>
         <label for="email">Email</label>
@@ -48,7 +49,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         flash("password must not be empty");
         $hasError = true;
     }
-    if (!strlen($password) < 8) {
+    if (!strlen($password) > 8) {
         flash("Password too short");
         $hasError = true;
     }

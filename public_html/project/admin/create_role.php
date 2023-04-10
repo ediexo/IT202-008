@@ -28,6 +28,7 @@ if (isset($_POST["name"]) && isset($_POST["description"])) {
     }
 }
 ?>
+<link rel="stylesheet" href="style.css" type="text/css">
 <h1>Create Role</h1>
 <form method="POST">
     <div>

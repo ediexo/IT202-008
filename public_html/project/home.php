@@ -1,6 +1,7 @@
 <?php
 require(__DIR__."/../../partials/nav.php");
 ?>
+<link rel="stylesheet" href="style.css" type="text/css">
 <h1>Home</h1>
 <?php
 if(is_logged_in()){

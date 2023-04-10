@@ -1,6 +1,13 @@
 <?php
-function is_logged_in() {
-    return isset($_SESSION["user"]); //se($_SESSION, "user", false, false);
+function is_logged_in($redirect = false, $destination = "login.php")
+{
+    $isLoggedIn = isset($_SESSION["user"]);
+    if ($redirect && !$isLoggedIn) {
+        //if this triggers, the calling script won't receive a reply since die()/exit() terminates it
+        flash("You must be logged in to view this page", "warning");
+        die(header("Location: $destination"));
+    }
+    return $isLoggedIn;
 }
 function has_role($role) {
     if (is_logged_in() && isset($_SESSION["user"]["roles"])) {

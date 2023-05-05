@@ -24,8 +24,9 @@ session_start();
 
 
 ?>
+<html>
 <!-- include css and js files -->
-<link rel="stylesheet" href="<?php echo get_url('styles.css'); ?>">
+<link rel="stylesheet" href="styles.css" type="text/css">
 <script src="<?php echo get_url('helpers.js'); ?>"></script>
 <nav>
     <ul>
@@ -47,3 +48,4 @@ session_start();
         <?php endif; ?>
     </ul>
 </nav>
+</html>

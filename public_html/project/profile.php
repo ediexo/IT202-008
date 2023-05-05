@@ -1,10 +1,7 @@
 <?php
 require_once(__DIR__ . "/../../partials/nav.php");
-if (!is_logged_in()) {
-    die(header("Location: login.php"));
-}
+is_logged_in(true);
 ?>
-<link rel="stylesheet" href="style.css" type="text/css">
 <?php
 if (isset($_POST["save"])) {
     $email = se($_POST, "email", null, false);
@@ -16,7 +13,7 @@ if (isset($_POST["save"])) {
     try {
         $stmt->execute($params);
         flash("Profile saved", "success");
-    } catch (Exception $e) {
+    } catch (PDOException $e) {
         if ($e->errorInfo[1] === 1062) {
             //https://www.php.net/manual/en/function.preg-match.php
             preg_match("/Users.(\w+)/", $e->errorInfo[2], $matches);
@@ -74,7 +71,7 @@ if (isset($_POST["save"])) {
                         flash("Current password is invalid", "warning");
                     }
                 }
-            } catch (Exception $e) {
+            } catch (PDOException $e) {
                 echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
             }
         } else {
@@ -123,22 +120,8 @@ $username = get_username();
 
         //example of using flash via javascript
         //find the flash container, create a new element, appendChild
-        if (pw !== con) {
-            //find the container
-            let flash = document.getElementById("flash");
-            //create a div (or whatever wrapper we want)
-            let outerDiv = document.createElement("div");
-            outerDiv.className = "row justify-content-center";
-            let innerDiv = document.createElement("div");
-
-            //apply the CSS (these are bootstrap classes which we'll learn later)
-            innerDiv.className = "alert alert-warning";
-            //set the content
-            innerDiv.innerText = "Password and Confirm password must match";
-
-            outerDiv.appendChild(innerDiv);
-            //add the element to the DOM (if we don't it merely exists in memory)
-            flash.appendChild(outerDiv);
+        if (!isEqual(pw, con)) {
+            flash("Password and Confrim password must match", "warning");
             isValid = false;
         }
         return isValid;

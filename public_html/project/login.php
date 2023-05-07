@@ -2,17 +2,20 @@
 require_once(__DIR__ . "/../../partials/nav.php");
 ?>
 <link rel="stylesheet" href="style.css" type="text/css">
-<form onsubmit="return validate(this)" method="POST">
-    <div>
-        <label for="email">Email/Username</label>
-        <input type="text" name="email" required />
-    </div>
-    <div>
-        <label for="pw">Password</label>
-        <input type="password" id="pw" name="password" required minlength="8" />
-    </div>
-    <input type="submit" value="Login" />
-</form>
+<h1>Login</h1>
+<div class="container-fluid">
+    <form onsubmit="return validate(this)" method="POST">
+        <div class="mb-3">
+            <label class="form-label" for="email">Email/Username</label>
+            <input class="form-control" type="text" name="email" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="pw">Password</label>
+            <input class="form-control" type="password" id="pw" name="password" required minlength="8" />
+        </div>
+        <input type="submit" class="mt-3 btn btn-primary" value="Login" />
+    </form>
+</div>
 <script>
     function validate(form) {
         //TODO 1: implement JavaScript validation
@@ -101,7 +104,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                         } else {
                             $_SESSION["user"]["roles"] = []; //no roles
                         }
-                        flash("Welcome, " . get_username());
+                        
                         die(header("Location: home.php"));
                     } else {
                         flash("Invalid password");

@@ -1,35 +1,4 @@
-body {
-    font-family: Georgia;
-    background-color:  #dbd0bd;
-    color: #271b04;
-  }
-  
-  
-  
-  input {
-    padding: 5px 5px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid green;
-  }
-  
-  nav ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #271b04;
-  }
-  
-  nav li a{
-    display: block;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-    }
-  
-  nav li a:hover {
-  color:green;
-  background-color:white;
-  }
+* {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
   

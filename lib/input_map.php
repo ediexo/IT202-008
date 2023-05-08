@@ -11,3 +11,4 @@ function input_map($fieldType)
     }
     return "text"; //default
 }
+?>

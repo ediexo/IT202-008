@@ -4,7 +4,7 @@ require_once(__DIR__ . "/../../partials/nav.php");
 <link rel="stylesheet" href="style.css" type="text/css">
 <h1>Login</h1>
 <div class="container-fluid">
-    <form onsubmit="return validate(this)" method="POST">
+    <form onsubmit="return validate(this)" method="POST" class="col-6">
         <div class="mb-3">
             <label class="form-label" for="email">Email/Username</label>
             <input class="form-control" type="text" name="email" required />

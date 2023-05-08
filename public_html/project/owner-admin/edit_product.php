@@ -44,9 +44,9 @@ function map_column($col)
     return "text";
 }
 ?>
-<div class="container-fluid">
+<div class="container">
     <h1>Edit Product</h1>
-    <form method="POST">
+    <form method="POST" class="col-6">
         <?php foreach ($result as $column => $value) : ?>
             <?php /* Lazily ignoring fields via hardcoded array*/ ?>
             <?php if (!in_array($column, $ignore)) : ?>

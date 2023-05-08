@@ -19,7 +19,7 @@ $ignore = ["id", "modified", "created"];
 ?>
 <div class="container-fluid">
     <h1>Add a Product to your Shop</h1>
-    <form method="POST">
+    <form method="POST" class="col-6">
         <?php foreach ($columns as $index => $column) : ?>
             <?php /* Lazily ignoring fields via hardcoded array*/ ?>
             <?php if (!in_array($column["Field"], $ignore)) : ?>

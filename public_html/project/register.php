@@ -3,25 +3,27 @@ require(__DIR__ . "/../../partials/nav.php");
 reset_session();
 ?>
 <link rel="stylesheet" href="style.css" type="text/css">
-<form onsubmit="return validate(this)" method="POST">
-    <div>
-        <label class="form-label" for="email">Email</label>
-        <input class="form-control" type="email" name="email" required />
-    </div>
-    <div>
-        <label class="form-label" for="username">Username</label>
-        <input class="form-control" type="text" name="username" required maxlength="30" />
-    </div>
-    <div>
-        <label class="form-label" for="pw">Password</label>
-        <input class="form-control" type="password" id="pw" name="password" required minlength="8" />
-    </div>
-    <div>
-        <label class="form-label" for="confirm">Retype Password</label>
-        <input class="form-control" type="password" name="confirm" required minlength="8" />
-    </div>
-    <input type="submit" class="mt-3 btn btn-primary" value="Register" />
-</form>
+<div class="container-fluid">
+    <form onsubmit="return validate(this)" method="POST" class="col-6">
+        <div>
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" name="email" required />
+        </div>
+        <div>
+            <label class="form-label" for="username">Username</label>
+            <input class="form-control" type="text" name="username" required maxlength="30" />
+        </div>
+        <div>
+            <label class="form-label" for="pw">Password</label>
+            <input class="form-control" type="password" id="pw" name="password" required minlength="8" />
+        </div>
+        <div>
+            <label class="form-label" for="confirm">Retype Password</label>
+            <input class="form-control" type="password" name="confirm" required minlength="8" />
+        </div>
+        <input type="submit" class="mt-3 btn btn-primary" value="Register" />
+    </form>
+</div>
 <script>
     function validate(form) {
         //TODO 1: implement JavaScript validation

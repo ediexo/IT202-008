@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS Shop_Cart(
+CREATE TABLE IF NOT EXISTS `Shop_Cart`(
     `id`     int AUTO_INCREMENT PRIMARY  KEY,
     `desired_quantity`   int,
     `prod_id`    int,
@@ -9,6 +9,6 @@ CREATE TABLE IF NOT EXISTS Shop_Cart(
     check (`desired_quantity` > 0),
     check (`unit_price` >= 0), -- don't allow negative costs
     FOREIGN KEY (`user_id`) REFERENCES Users(`id`),
-    FOREIGN KEY (`item_id`) REFERENCES RM_Items(`id`),
+    FOREIGN KEY (`prod_id`) REFERENCES Products(`id`),
     UNIQUE KEY (`user_id`, `prod_id`)
 )

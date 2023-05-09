@@ -25,9 +25,9 @@ if (isset($_POST["productName"])) {
 ?>
 <div class="container-fluid">
     <h1>List Products</h1>
-    <form method="POST" class="row row-cols-lg-auto g-3 align-items-center">
+    <form method="POST" class="row row-cols-lg-auto g-3 align-items-center col-6">
         <div class="input-group mb-3">
-            <input class="form-control" type="search" name="productName" placeholder="Item Filter" value="<?php se($_POST, 'productName');?>" />
+            <input class="form-control" type="search" name="productName" placeholder="Product Filter" value="<?php se($_POST, 'productName');?>" />
             <input class="btn btn-primary" type="submit" value="Search" />
         </div>
     </form>
@@ -51,7 +51,7 @@ if (isset($_POST["productName"])) {
 
 
                     <td>
-                        <a href="edit_item.php?id=<?php se($record, "id"); ?>">Edit</a>
+                        <a href="edit_product.php?id=<?php se($record, "id"); ?>">Edit</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

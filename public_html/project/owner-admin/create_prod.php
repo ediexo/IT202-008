@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
 //get the table definition
 $columns = get_columns($TABLE_NAME);
 //echo "<pre>" . var_export($columns, true) . "</pre>";
-$ignore = ["id", "modified", "created"];
+$ignore = ["id", "modified", "created", "visible"];
 ?>
 <div class="container-fluid">
     <h1>Add a Product to your Shop</h1>
@@ -29,6 +29,13 @@ $ignore = ["id", "modified", "created"];
                 </div>
             <?php endif; ?>
         <?php endforeach; ?>
+        <div class= "form-check">
+            Visibility
+            <label class="form-check-label" for="true">True</label>
+            <input name="visible" type="radio" id="true" value='1'class="form-check-input">
+            <label class="form-check-label" for="false">False</label>
+            <input name="visible" type="radio" id="false" value='0' class="form-check-input">
+        </div>
         <input class="btn btn-primary" type="submit" value="Create" name="submit" />
     </form>
 </div>

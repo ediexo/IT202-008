@@ -29,6 +29,18 @@ function se($v, $k = null, $default = "", $isEcho = true) {
         return htmlspecialchars($returnValue, ENT_QUOTES);
     }
 }
+
+function sePrice ($prod, $print = true){
+    $price = floatval(se($prod, "unit_price", "", false)); 
+    $price = $price/100;
+    if ($print = true){
+        echo "Cost: $" . round($price, 2);
+    }
+    else {
+        return $price;
+    }
+    
+}
 function safer_echo($v, $k = null, $default = "", $isEcho = true){
   return se($v, $k, $default, $isEcho);
 }

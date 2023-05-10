@@ -31,8 +31,9 @@ $ignore = ["id", "modified", "created", "visible"];
         <?php endforeach; ?>
         <div class= "form-check">
             Visibility
+            <br>
             <label class="form-check-label" for="true">True</label>
-            <input name="visible" type="radio" id="true" value='1'class="form-check-input">
+            <input name="visible" type="radio" id="true" value='1'class="form-check-input"> <br>
             <label class="form-check-label" for="false">False</label>
             <input name="visible" type="radio" id="false" value='0' class="form-check-input">
         </div>

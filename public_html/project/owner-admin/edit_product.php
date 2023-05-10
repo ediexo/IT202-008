@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {
 $result = [];
 $columns = get_columns($TABLE_NAME);
 //echo "<pre>" . var_export($columns, true) . "</pre>";
-$ignore = ["id", "modified", "created"];
+$ignore = ["id", "modified", "created", "visible"];
 $db = getDB();
 //get the item
 $id = se($_GET, "id", -1, false);
@@ -56,6 +56,13 @@ function map_column($col)
                 </div>
             <?php endif; ?>
         <?php endforeach; ?>
+        <div class= "form-check">
+            Visibility
+            <label class="form-check-label" for="true">True</label>
+            <input name="visible" type="radio" id="true" value='1'class="form-check-input"> <br>
+            <label class="form-check-label" for="false">False</label>
+            <input name="visible" type="radio" id="false" value='0' class="form-check-input">
+        </div>
         <input class="btn btn-primary" type="submit" value="Update" name="submit" />
     </form>
 </div>

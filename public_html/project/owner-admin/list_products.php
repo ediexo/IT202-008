@@ -10,9 +10,10 @@ if (!has_role("Admin") && !has_role("Shop_Owner")) {
 $results = [];
 if (isset($_POST["productName"])) {
     $db = getDB();
-    $stmt = $db->prepare("SELECT id, name, description, stock, cost, image from $TABLE_NAME WHERE name like :name LIMIT 50");
+    $pname = $_POST['productName'];
+    $stmt = $db->prepare("SELECT id, name, description, category, stock, unit_price, visible from $TABLE_NAME WHERE name like :name LIMIT 50");
     try {
-        $stmt->execute([":name" => "%" . $_POST["productName"] . "%"]);
+        $stmt->execute([":name" => "%" . $pname . "%"]);
         $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if ($r) {
             $results = $r;
@@ -27,7 +28,7 @@ if (isset($_POST["productName"])) {
     <h1>List Products</h1>
     <form method="POST" class="row row-cols-lg-auto g-3 align-items-center col-6">
         <div class="input-group mb-3">
-            <input class="form-control" type="search" name="productName" placeholder="Product Filter" value="<?php se($_POST, 'productName');?>" />
+            <input class="form-control" type="search" name='productName' placeholder="Product Filter" value="<?php se($_POST, 'productName');?>" />
             <input class="btn btn-primary" type="submit" value="Search" />
         </div>
     </form>
